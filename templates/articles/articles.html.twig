@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrace článků{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+
+      <a href="{{path('app_logout')}}">Odhlásit se</a>
+    
+        <h1 class="mb-4">Administrace článků</h1>
+
+        {% if articles|length == 0 %}
+            <h3 class="text-muted">Nebyly zatím přidány žádné články.</h3>
+        {% else %}
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulek</th>
+                        <th>Akce</th>
+                        <th>Obrázek</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.id }}</td>
+                            <td>{{ article.title }}</td>
+                                <td>
+                                    <a href="{{ path('upravit_clanek', { id: article.id }) }}" class="btn btn-primary btn-sm">Upravit</a>
+                                    <a href="{{ path('smazat_clanek', { id: article.id }) }}" class="btn btn-danger btn-sm">Smazat</a>
+                                </td>
+                            <td>
+                                {% if article.perex != null %}
+                                    <img src="{{ asset('uploads/' ~ article.perex) }}" class="img-fluid" style="max-width: 100px;">
+                                {% else %}
+                                    <span class="text-muted">Žádný obrázek</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        
+        <a href="{{ path('pridat_clanek') }}" class="btn btn-success mt-3">Přidat článek</a>
+    </div>
+{% endblock %}
