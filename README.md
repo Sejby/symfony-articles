@@ -7,5 +7,6 @@ Před spuštěním:
 - symfony server:start
 - Emailová adresa při registraci musí být validní se @
 - Heslo alespoň 6 znaků dlouhé
+- Obrázky musí být do velikosti 5 MB
 
 - Je potřeba mít povoleno v PHP gd extension pro manipulaci s obrázky
