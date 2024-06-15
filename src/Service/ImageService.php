@@ -16,6 +16,7 @@ class ImageService
         $this->photoDir = $photoDir;
     }
 
+    // Zpracování obrázku
     public function processImage(UploadedFile $photo): array
     {
         $filename = uniqid() . '.' . $photo->guessExtension();
@@ -37,6 +38,7 @@ class ImageService
         ];
     }
 
+    // Smazání obrázku
     public function deleteImage(string $filename): void
     {
         $imagePath = $this->photoDir . '/' . $filename;

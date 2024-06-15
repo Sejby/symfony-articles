@@ -21,6 +21,7 @@ class ArticlesController extends AbstractController
         $this->imageService = $imageService;
     }
 
+    // Domovská hlavní stránka, přístupná pro všechny
     #[Route('/', name: 'home')]
     public function home(): Response
     {
@@ -31,6 +32,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // Stránka s administrací článků
     #[Route('/clanky', name: 'clanky')]
     public function index(): Response
     {
@@ -41,6 +43,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // Stránka pro přidání článku
     #[Route('/pridat-clanek', name: 'pridat_clanek')]
     public function createArticle(Request $request): Response
     {
@@ -70,6 +73,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // Stránka pro úpravu článku podle jeho ID
     #[Route('/upravit-clanek/{id}', name: 'upravit_clanek')]
     public function editArticle(Request $request, $id): Response
     {
@@ -100,6 +104,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // Stránka se smazaním obrázku podle jeho ID
     #[Route('/smazat-clanek/{id}', name: 'smazat_clanek')]
     public function deleteArticle($id): Response
     {
